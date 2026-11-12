@@ -48,4 +48,30 @@ public class QueueTest extends TestCase {
         assertTrue(queue.isEmpty());
     }
 
+    public void testPeekEmpty()
+    {
+        assertNull(queue.peek());
+        assertEquals(0, queue.size());
+    }
+
+    public void testEmptyDequeue()
+    {
+
+        assertNull(queue.dequeue());
+        assertTrue(queue.isEmpty());
+    }
+
+    public void testSize()
+    {
+        assertEquals(0, queue.size());
+        queue.enqueue(jobnum1);
+        assertEquals(1, queue.size());
+        queue.enqueue(jobnum2);
+        assertEquals(2, queue.size());
+        queue.dequeue();
+        assertEqualsl(1, queue.size());
+    }
+    
+
+
 }
