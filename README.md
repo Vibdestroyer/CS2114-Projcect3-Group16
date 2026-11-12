@@ -80,7 +80,18 @@ Our suggested non-trivial feature is a skip-and-requeue feature. The user will b
 This feature would require changes to the queue operations, controller, and view.
 
 # Which stretch goals will you attempt?
-For this deliverable, we plan to prioritize completing the MVP and implementing the skip-and-requeue feature. Additional stretch goals can also include 
+For this deliverable, we plan to prioritize completing the MVP and implementing the skip-and-requeue feature. This allows users to move the next printing job to the end of the queue without printing it.  This would involve Queue.dequeue(), Queue.enqueue(), and updates to the controller and view. 
+
+Additional stretch goals can also include:
+1. Ink Management: 
+Add an ink level that decreases as jobs are printed. Allows users to refill ink, and prevents printing when there is insufficient ink. We will update Printer.java to track ink levels, and update printer_view.java to display remaining ink.
+
+2. Different Paper Types:
+Introduce paper types such as standard, glossy, and cardstock. Allow print jobs to require a specific paper type. Prevents printing when the incorrect paper type is loaded. Update Print_Job.java to store paper requirements. Update Printer.java to check paper compatibility. Update Printer_View.java to display paper settings. 
+
+**Deferred Features:**
+Ink management and different paper types are not required for the MVP. These features will only be considered after the core game and primary change feature are done.
+
 
 # What new tests will you need?
 1. Test skip-and-requeue with multiple jobs
@@ -110,7 +121,7 @@ class and test file in the Print Panic project.
 
 
 # Gen AI disclosure
-Victor-
-Chris- 
-Madison-
+1. Victor-
+2. Chris- 
+3. Madison-
 
