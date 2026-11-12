@@ -1,13 +1,13 @@
 import student.TestCase;
 
 public class QueueTest extends TestCase {
-    private Queue<Print_Job> queue;
+    private Queue queue;
     private Print_Job jobnum1;
     private Print_Job jobnum2;
 
     public void setUp()
     {
-        queue= new Queue<Print_Job>();
+        queue= new Queue();
         jobnum1=new Print_Job(4, "Madison", "Paper");
         jobnum2=new Print_Job(5, "Chris", "Presentation");
     }
