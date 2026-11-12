@@ -10,16 +10,17 @@ public class PrinterTest extends TestCase {
 
     public void testPaperInitial()
     {
-        assertEquals(0, printer.getPaperCount());
-        assertEquals(150, printer.getMaxPaperCount());
+        assertEquals(0, printer.getCurrentPaper());
+        assertEquals(150, printer.getMaxPaper());
     }
 
     public void testAddPaper()
     {
         printer.addPaper(50);
-        assertEquals(50, printer.getPaperCount());
+        assertEquals(50, printer.getCurrentPaper());
+
         printer.addPaper(35);
-        assertEquals(85, printer.getPaperCount());
+        assertEquals(85, printer.getCurrentPaper());
     }
 
     public void testPrinterJobNext()
@@ -27,8 +28,9 @@ public class PrinterTest extends TestCase {
         printer.addPaper(40);
         Print_Job jobnum1= new Print_Job(10, "Madison", "Report");
         printer.addJob(jobnum1);
+
         assertTrue(printer.printNextJob());
-        assertEquals(30, printer.getPaperCount());
+        assertEquals(30, printer.getCurrentPaper());
         assertEquals(0, printer.getPendingJobs());
     }
 
@@ -38,7 +40,7 @@ public class PrinterTest extends TestCase {
         Print_Job jobnum1= new Print_Job(10, "Madison", "Photo");
         printer.addJob(jobnum1);
         assertFalse(printer.printNextJob());
-        assertEquals(5, printer.getPaperCount());
+        assertEquals(5, printer.getCurrentPaper());
         assertEquals(1, printer.getPendingJobs());
         assertEquals(jobnum1, printer.getNextJob());
         printer.addPaper(10);
@@ -54,7 +56,7 @@ public class PrinterTest extends TestCase {
         assertTrue(printer.isJammed());
         assertFalse(printer.printNextJob());
 
-        assertEquals(20, printer.getPaperCount());
+        assertEquals(20, printer.getCurrentPaper());
         assertEquals(1, printer.getPendingJobs());
         assertEquals(job, printer.getNextJob());
     }
@@ -63,7 +65,7 @@ public class PrinterTest extends TestCase {
         printer.addPaper(30);
         assertEquals(0, printer.getPendingJobs());
         assertFalse(printer.printNextJob());
-        assertEquals(30, printer.getPaperCount());
+        assertEquals(30, printer.getCurrentPaper());
 
         assertEquals(0, printer.getPendingJobs());
         assertNull(printer.getNextJob());
