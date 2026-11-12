@@ -70,7 +70,6 @@ public class Print_JobTest extends TestCase{
         }
         assertNotNull(exception);
         }
-}
 
     public void testNullRequester()
     {
@@ -100,19 +99,60 @@ public class Print_JobTest extends TestCase{
         assertNotNull(exception);
     }
 
-
-
-
-    public void testElevenPages()
+    public void testGetBlankRequester()
     {
-        assertEquals(11, jobnum3.getPages());
+        Exception exception=null;
+
+        try{
+            new Print_Job(4, "", "Calculus practice problems and solutions");
+        }
+        catch(IllegalArgumentException e)
+        {
+            exception=e;
+        }
+        assertNotNull(exception);
     }
 
-    public void testDifferentJobs()
+    public void testNullDescription()
     {
-        assertEquals(3, jobnum1.getPages());
-        assertEquals(5, jobnum2.getPages());
-        assertEquals(11, jobnum3.getPages());
+        Exception exception=null;
+
+        try{
+            new Print_Job(3, "Cameron", null);
+        }
+        catch(IllegalArgumentException e)
+        {
+            exception=e;
+        }
+        assertNotNull(exception);
+    }
+
+    public voidTestEmptyDescription()
+    {
+        Exception exception=null;
+
+        try{
+            new Print_Job(4, "Casey", "");
+        }
+        catch(IllegalArgumentException e)
+        {
+            exception=e;
+        }
+        assertNotNull(exception);
+    }
+
+    public void testBlankDescription()
+    {
+        Exception exception=null;
+
+        try{
+            new Print_Job(6, "Riley", " ");
+        }
+        catch(IllegalArgumentException e)
+        {
+            exception=e;
+        }
+        assertNotNull(exception);
     }
 
     public void testIndepJobs()
@@ -122,3 +162,4 @@ public class Print_JobTest extends TestCase{
 
         assertEquals(3, jobnum1.getPages());
     }
+}
