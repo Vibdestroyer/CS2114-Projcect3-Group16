@@ -107,14 +107,6 @@ Ink management and different paper types are not required for the MVP. These fea
 2. Test skip-and-requeue with empty queue.
 3. Test that skipping with a single job leaves that job at the front and uses no paper.
 
-# Who does what?
-| Team Member | Responsibilities |
-|---|---|
-| Madison | QueueTest.java, PrinterTest.java, Print_JobTest.java, testing plan, README |
-| [Teammate] | [Actual contributions] |
-| [Teammate] | [Actual contributions] |
-
-
 # Attribution
 The following table documents team contributions to each
 class and test file in the Print Panic project.
