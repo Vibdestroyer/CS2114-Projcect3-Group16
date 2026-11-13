@@ -122,7 +122,7 @@ public class QueueTest extends TestCase {
         assertTrue(queue.isEmpty());
 
         queue.enqueue(jobnum1);
-        assertEquals(1, queue.dequeue());
+        assertEquals(jobnum1, queue.dequeue());
 
         assertTrue(queue.isEmpty());
     }
