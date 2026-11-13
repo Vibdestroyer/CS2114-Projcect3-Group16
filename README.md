@@ -54,10 +54,8 @@ successfully.
 
 ## What is left to finish the MVP?
 
-1. Fix the display so a one-page job shows `1 page`.
-2. Verify that invalid menu input is handled without crashing.
-3. Run the current test suite and record the results.
-4. Review the README and confirm the attribution entries with the team.
+1. Verify that invalid menu input is handled without crashing.
+2. Make sure test coverage is sufficient and meets rubric criteria.
 
 Added testing will cover paper capacity, printing behavior, inputs that aren't valid, and queue preservation when a job can't be printed successfully.
 
