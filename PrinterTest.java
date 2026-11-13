@@ -152,4 +152,51 @@ public class PrinterTest extends TestCase {
         }
         assertEquals(shouldThrow, exception != null);
     }
+
+    public void testPrintMultipleJobs()
+    {
+        printer.addPaper(50);
+        Print_Job job1 = new Print_Job(5, "Alex", "Notes");
+    Print_Job job2 = new Print_Job(10, "Sam", "Report");
+
+        printer.addJob(job1);
+        printer.addJob(job2);
+
+        assertEquals(2, printer.getPendingJobs());
+
+        assertTrue(printer.printNextJob());
+        assertEquals(45, printer.getCurrentPaper());
+        assertEquals(1, printer.getPendingJobs());
+
+        assertTrue(printer.printNextJob());
+        asserttEquals(35, printer.getCurrentPaper());
+        assertEquals(0, printer.getPendingJobs());
+    }
+
+    public void testClearJamQueuePreserved()
+    {
+        printer.addPaper(30);
+
+        Print_Job job1 = new Print_Job(5, "Alex", "Notes");
+    Print_Job job2 = new Print_Job(8, "Sam", "Report");
+
+        printer.addJob(job1);
+        printer.addJob(job2);
+
+        printer.jam();
+
+        assertFalse(printer.printNextJob());
+        assertEquals(2, printer.getPendingJobs());
+        assertEquals(30, printer.getCurrentPaper());
+
+        printer.clearJam();
+
+        assertFalse(printer.isJammed());
+        assertEquals(job1, printer.getNextJob());
+        assertTrue(printer.printNextJob());
+        assertEquals(25, printer.getCurrentPaper());
+        assertEquals(job2, printer.getNextJob());
+
+        
+    }
 }

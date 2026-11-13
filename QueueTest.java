@@ -112,5 +112,37 @@ public class QueueTest extends TestCase {
         assertEquals(jobnum2, queue.peek());
         assertEquals(1, queue.size());
     }
+    public void testRepeatedEmptyOperations()
+    {
+        assertNull(queue.dequeue());
+        assertNull(queue.dequeue());
+        assertNull(queue.peek());
+
+        assertEquals(0, queue.size());
+        assertTrue(queue.isEmpty());
+
+        queue.enqueue(jobnum1);
+        assertEquals(1, queue.dequeue());
+
+        assertTrue(queue.isEmpty());
+    }
+
+    public void testOrderAfterChanges()
+    {
+        Print_Job job3 = new Print_Job(7, "Chris", "Homework");
+
+        queue.enqueue(jobnum1);
+        queue.enqueue(jobnum2);
+
+        assertEquals(jobnum1, queue.dequeue());
+
+        queue.enqueue(job3);
+
+        assertEquals(2, queue.size());
+        assertEquals(jobnum2, queue.dequeue());
+        assertEquals(job3, queue.dequeue());
+        assertTrue(queue.isEmpty());
+
+    }
 
 }

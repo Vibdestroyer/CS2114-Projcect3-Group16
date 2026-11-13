@@ -115,4 +115,17 @@ public class Print_JobTest extends TestCase {
         }
         assertEquals(shouldThrow, exception != null);
     }
+    public void testMultipleIndependentJobs()
+    {
+         Print_Job first = new Print_Job(3, "Alex", "Essay");
+    Print_Job second = new Print_Job(8, "Sam", "Report");
+
+        assertEquals(3, first.getPages());
+        assertEquals(8, second.getPages());
+        assertEquals("Sam", second.getRequester());
+        assertEquals("Report", second.getDescription());
+
+        assertEquals(3, first.getPages());
+        assertEquals("Alex", first.getRequester());
+    }
 }
