@@ -169,7 +169,7 @@ public class PrinterTest extends TestCase {
         assertEquals(1, printer.getPendingJobs());
 
         assertTrue(printer.printNextJob());
-        asserttEquals(35, printer.getCurrentPaper());
+        assertEquals(35, printer.getCurrentPaper());
         assertEquals(0, printer.getPendingJobs());
     }
 
