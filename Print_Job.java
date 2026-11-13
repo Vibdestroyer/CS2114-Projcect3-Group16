@@ -5,13 +5,16 @@ public class Print_Job {
 
     public Print_Job(int pages, String requester, String description) {
         if (pages <= 0) {
-            throw new IllegalArgumentException("A job must have at least one page.");
+            throw new IllegalArgumentException(
+                "A job must have at least one page.");
         }
         if (requester == null || requester.trim().isEmpty()) {
-            throw new IllegalArgumentException("The requester cannot be blank.");
+            throw new IllegalArgumentException(
+                "The requester cannot be blank.");
         }
         if (description == null || description.trim().isEmpty()) {
-            throw new IllegalArgumentException("The description cannot be blank.");
+            throw new IllegalArgumentException(
+                "The description cannot be blank.");
         }
 
         this.pages = pages;
@@ -19,13 +22,16 @@ public class Print_Job {
         this.description = description;
     }
 
+
     public int getPages() {
         return pages;
     }
 
+
     public String getRequester() {
         return requester;
     }
+
 
     public String getDescription() {
         return description;

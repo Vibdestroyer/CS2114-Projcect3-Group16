@@ -19,6 +19,7 @@ public class Queue {
         size = 0;
     }
 
+
     public void enqueue(Print_Job job) {
         if (job == null) {
             throw new IllegalArgumentException("A print job cannot be null.");
@@ -35,6 +36,7 @@ public class Queue {
         size++;
     }
 
+
     public Print_Job dequeue() {
         if (front == null) {
             return null;
@@ -49,6 +51,7 @@ public class Queue {
         return job;
     }
 
+
     public Print_Job peek() {
         if (front == null) {
             return null;
@@ -56,9 +59,11 @@ public class Queue {
         return front.job;
     }
 
+
     public boolean isEmpty() {
         return size == 0;
     }
+
 
     public int size() {
         return size;

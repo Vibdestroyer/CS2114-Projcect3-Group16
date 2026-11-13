@@ -23,18 +23,22 @@ public class Text_Reader {
         random = new Random();
     }
 
+
     public String getRandomName() {
         return names.get(random.nextInt(names.size()));
     }
+
 
     public String getRandomDescription() {
         return descriptions.get(random.nextInt(descriptions.size()));
     }
 
+
     public Print_Job createRandomJob() {
         int pages = random.nextInt(MAX_JOB_PAGES) + 1;
         return new Print_Job(pages, getRandomName(), getRandomDescription());
     }
+
 
     private List<String> loadEntries(String path) throws IOException {
         if (path == null || path.trim().isEmpty()) {

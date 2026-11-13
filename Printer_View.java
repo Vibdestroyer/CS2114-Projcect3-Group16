@@ -5,8 +5,8 @@ public class Printer_View {
     private final Scanner input;
     private final PrintStream output;
 
-    public Printer_View() {
-        this(new Scanner(System.in), System.out);
+    public Printer_View() { 
+        this(new Scanner(System.in), System.out); 
     }
 
     public Printer_View(Scanner input, PrintStream output) {
@@ -37,6 +37,7 @@ public class Printer_View {
         output.println("1. Print next job");
         output.println("2. Refill paper to maximum");
         output.println("3. Clear jam");
+        output.println("4. Skip next job");
         output.println("0. Quit");
         output.print("Choose an action: ");
         output.flush();
