@@ -109,11 +109,14 @@ class and test file in the Print Panic project.
 | File | Team Member(s) | Contributions |
 |------|----------------|---------------|
 | Main.java | [Name] | Wrote and revised the main game logic and controller. |
+| MainTest.java | [Chris] | Wrote and revised the main game testing logic. |
 | Printer.java | [Name] | Implemented and tested printer operations, paper management, and jams. |
 | Printer_View.java | [Name] | Created and reviewed the console interface and user input handling. |
+| Printer_ViewTest.java | [Chris] | Created and revised the testing methods and logic for Printer_View. |
 | Queue.java | [Name] | Implemented the linked queue and FIFO operations. |
 | Print_Job.java | [Name] | Created and tested the print job class and its methods. |
 | Text_Reader.java | [Name] | Implemented file reading and random print job generation. |
+| Text_ReaderTest.java | [Chris] | Created and revised the testing logic for Text_Reader. |
 | QueueTest.java | [Madison] | Wrote and ran tests for queue operations and edge cases. |
 | PrinterTest.java | [Madison] | Wrote and ran tests for printer functionality. |
 | Print_JobTest.java | [Name] | Wrote and ran tests for print job behavior. |
@@ -122,6 +125,6 @@ class and test file in the Print Panic project.
 
 # Gen AI disclosure
 1. Victor-
-2. Chris- 
+2. Chris- Used GenAI to fix test methods and understand where they were failing.
 3. Madison-
 
