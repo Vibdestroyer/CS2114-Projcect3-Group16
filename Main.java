@@ -6,8 +6,8 @@ public class Main {
     private static final int MAX_PAPER = 50;
     private static final int STARTING_JOBS = 3;
     private static final int MAX_PENDING_JOBS = 15;
-    private static final double NEW_JOB_CHANCE = 0.50;
-    private static final double JAM_CHANCE = 0.15;
+    private static final double NEW_JOB_CHANCE = 0.60;
+    private static final double JAM_CHANCE = 0.35;
 
     private final Printer printer;
     private final Printer_View view;
