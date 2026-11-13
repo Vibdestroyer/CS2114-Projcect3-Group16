@@ -139,7 +139,7 @@ class and test file in the Print Panic project.
 
 
 # Gen AI disclosure
-1. Victor-
+1. Victor-used GenAi to help write and revise code.
 2. Chris- Used GenAI to fix test methods and understand where they were failing.
 3. Madison- Used GenAI to fix test file issues and why mine were not correctly running, and distinguish what needed to go on the readme.
 
