@@ -67,7 +67,7 @@ During the process, we separated the model into classes with specified responsib
 The linked queue allows us to print jobs in the order they come in (FIFO). Separating the printer from the view allows the printer behaviors to be tested without needing console interaction. 
 
 # Changes from Original Spec
-Some changes from our original spec include adding a fourth menu option that lets the player skip the next print job.
+We added a fourth menu option, **Skip next job**, so players can postpone the job at the front of the queue. Skipping moves that job to the back and brings the next job to the front. The other jobs keep their relative order, and skipping uses no paper.
 
 
 # Next Steps 
