@@ -36,7 +36,9 @@ public class Text_Reader {
 
     public Print_Job createRandomJob() {
         int pages = random.nextInt(MAX_JOB_PAGES) + 1;
-        return new Print_Job(pages, getRandomName(), getRandomDescription());
+        int priority= random.nextInt(3)+1;
+
+        return new Print_Job(pages, getRandomName(), getRandomDescription(), priority);
     }
 
 
