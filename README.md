@@ -60,9 +60,15 @@ successfully.
 Added testing will cover paper capacity, printing behavior, inputs that aren't valid, and queue preservation when a job can't be printed successfully.
 
 # Reflection
-During the process, we separated the model into classes with specified responsibilites to ensure the code was easy to maintain and build test cases for.
+Our original design used a standard FIFO queue, where print jobs were processed in the order they came in. For this deliverable, we changed the design to support priority based printing. 
 
-The linked queue allows us to print jobs in the order they come in (FIFO). Separating the printer from the view allows the printer behaviors to be tested without needing console interaction. 
+We noticed that we did not need to completely change the queue we already had, and instead we were able to modify the enqueue() method to insert jobs based on their priority while keeping the rest of the queue structure mostly the same.
+
+We also had think about what would happen when multiple jobs had the same priority, and decided to preserve the original order of arrival so the queue would still be fair. 
+
+This updated feature helped us understand how a small change could have a larger effect on the program and how it operates.
+
+
 
 # Changes from Original Spec
 We added a fourth menu option, **Skip next job**, so players can postpone the job at the front of the queue. Skipping moves that job to the back and brings the next job to the front. The other jobs keep their relative order, and skipping uses no paper.
@@ -76,11 +82,17 @@ We added a fourth menu option, **Skip next job**, so players can postpone the jo
 5. Review and improve code documentation.
 
 # Your change feature.
-Our suggested non-trivial feature is a skip-and-requeue feature. The user will be able to move to the next pending print job to the back of the queue without actually printing it. This is non-trivial because it changes the model's behavior and is accessible through the contoller and view.
+For project 4, we updated Print Panic by implementing a priority queue for print jobs. Before, they were proceesed in the order they arrived using a first in, first out queue. With the new feature added, print jobs are assigned to a priority level that will decide when they are going to be printed. 
 
-This feature would require changes to the queue operations, controller, and view.
-Status: Planned; implementation not yet verified.
-A quick check is to start with A, B, C, press 4, and confirm the order becomes B, C, A with the same paper count.
+We introduced 3 priority levels:
+1) High(3): printed first.
+2) Normal(2): printed after high-priority jobs.
+3) Low(1): printed last.
+
+Jobs with the same level of priority are still printed in the order they arrived. To implement this feature, we updated the Print_Job class to 
+store a priority value and we changed the enqueue() method in Queue.java to insert jobs in order of priority. We changed Text_Reader.java to create random priority levels for new print jobs. 
+
+This feature will make the printer simulation more realistic, because documents that are more important can be processed first. 
 
 # Which stretch goals will you attempt?
 Primary: Skip-and-requeue.
