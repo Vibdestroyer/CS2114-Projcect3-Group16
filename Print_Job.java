@@ -4,9 +4,8 @@ public class Print_Job {
     private final String description;
     private final int priority;
 
-    public Print_Job(int pages, String requester, String description) 
+    public Print_Job(int pages, String requester, String description, int priority) 
     {
-        this(pages, requester, description, 2);
 
         if (pages <= 0) {
             throw new IllegalArgumentException(
