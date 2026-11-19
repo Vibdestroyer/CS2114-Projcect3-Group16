@@ -26,15 +26,39 @@ public class Queue {
         }
 
         Node newNode = new Node(job);
+        // Case 1: Queue is empty
         if (front == null) {
             front = newNode;
+            rear = newNode;
         }
+
+        //Case 2: New job has higher priority
+        else if (job.getPriority()> front.job.getPriority())
+        {
+            newNode.next=front;
+            front=newNode;
+        }
+
+        //case 3: Find the correct position
         else {
-            rear.next = newNode;
-        }
-        rear = newNode;
+
+            Node current= front;
+
+            while(current.next !=null
+                && current.next.job.getPriority()>=job.getPriority())
+                {
+                    current=current.next;
+                }
+            newNode.next= current.next;
+            current.next= newNode;
+
+            if (newNode.next == null)
+            {
+                rear= newNode;
+            }
         size++;
-    }
+        }
+}
 
 
     public Print_Job dequeue() {
