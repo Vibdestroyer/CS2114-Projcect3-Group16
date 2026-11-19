@@ -2,8 +2,12 @@ public class Print_Job {
     private final int pages;
     private final String requester;
     private final String description;
+    private final int priority;
 
-    public Print_Job(int pages, String requester, String description) {
+    public Print_Job(int pages, String requester, String description) 
+    {
+        this(pages, requester, description, 2);
+
         if (pages <= 0) {
             throw new IllegalArgumentException(
                 "A job must have at least one page.");
@@ -16,10 +20,17 @@ public class Print_Job {
             throw new IllegalArgumentException(
                 "The description cannot be blank.");
         }
+        if(priority<1 || priority>3)
+        {
+            throw new IllegalArgumentException(
+                "Priority must be between 1 and 3."
+            );
+        }
 
         this.pages = pages;
         this.requester = requester;
         this.description = description;
+        this.priority= priority;
     }
 
 
@@ -35,5 +46,10 @@ public class Print_Job {
 
     public String getDescription() {
         return description;
+    }
+
+    public int getPriority()
+    {
+        return priority;
     }
 }
