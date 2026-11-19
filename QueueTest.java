@@ -145,4 +145,39 @@ public class QueueTest extends TestCase {
 
     }
 
+    public void testPriorityOrder(){
+        Queue queue= new Queue();
+
+        Print_Job low= new Print_Job(2, "A", "Low", 1);
+        Print_Job high= new Print_Job(2, "B", "High", 3);
+        Print_Job normal= new Print_Job(2, "C", "Normal", 2);
+
+        queue.enqueue(low);
+        queue.enqueue(high);
+        queue.enqueue(normal);
+
+        assertEquals(high, queue.dequeue());
+        assertEquals(normal, queue.dequeue());
+        assertEquals(low, queue.dequeue());
 }
+
+    public void testSamePriorityOrder()
+    {
+        Queue queue= new Queue();
+        Print_Job firstjob= new Print_Job(2, "A", "First", 3);
+        Print_Job secondjob= new Print_Job(2, "B", "second", 3);
+        queue.enqueue(firstjob);
+        queue.enqueue(secondjob);
+
+        assertEquals(firstjob, queue.dequeue());
+        assertEquals(secondjob, queue.dequeue());
+    }
+
+    public void testPriorityEmptyQueue()
+    {
+        Queue queue= new Queue();
+        assertNull(queue.dequeue());
+        assertNull(queue.peek());
+        assertTrue(queue.isEmpty());
+        assertEquals(0, queue.size());
+    }
