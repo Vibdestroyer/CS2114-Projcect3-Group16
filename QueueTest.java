@@ -7,8 +7,8 @@ public class QueueTest extends TestCase {
 
     public void setUp() {
         queue = new Queue();
-        jobnum1 = new Print_Job(4, "Madison", "Paper");
-        jobnum2 = new Print_Job(5, "Chris", "Presentation");
+        jobnum1 = new Print_Job(4, "Madison", "Paper", 2);
+        jobnum2 = new Print_Job(5, "Chris", "Presentation", 1);
     }
 
 
@@ -22,8 +22,8 @@ public class QueueTest extends TestCase {
 
     public void testDequeue() {
         Queue queue = new Queue();
-        Print_Job jobnum1 = new Print_Job(2, "Madison", "Essay");
-        Print_Job jobnum2 = new Print_Job(5, "Riley", "Notes");
+        Print_Job jobnum1 = new Print_Job(2, "Madison", "Essay", 2);
+        Print_Job jobnum2 = new Print_Job(5, "Riley", "Notes", 1);
 
         queue.enqueue(jobnum1);
         queue.enqueue(jobnum2);
@@ -90,7 +90,7 @@ public class QueueTest extends TestCase {
 
     public void testPeekDoesNotRemove() {
         Queue queue = new Queue();
-        Print_Job jobnum1 = new Print_Job(4, "Taylor", "Report");
+        Print_Job jobnum1 = new Print_Job(4, "Taylor", "Report", 2);
 
         queue.enqueue(jobnum1);
 
@@ -101,8 +101,8 @@ public class QueueTest extends TestCase {
 
     public void testAfterDequeue() {
         Queue queue = new Queue();
-        Print_Job jobnum1 = new Print_Job(2, "Alex", "Notes");
-        Print_Job jobnum2 = new Print_Job(3, "Sam", "Homework");
+        Print_Job jobnum1 = new Print_Job(2, "Alex", "Notes", 2);
+        Print_Job jobnum2 = new Print_Job(3, "Sam", "Homework", 1);
 
         queue.enqueue(jobnum1);
         assertEquals(jobnum1, queue.dequeue());
@@ -129,7 +129,7 @@ public class QueueTest extends TestCase {
 
     public void testOrderAfterChanges()
     {
-        Print_Job job3 = new Print_Job(7, "Chris", "Homework");
+        Print_Job job3 = new Print_Job(7, "Chris", "Homework", 1);
 
         queue.enqueue(jobnum1);
         queue.enqueue(jobnum2);
@@ -181,3 +181,4 @@ public class QueueTest extends TestCase {
         assertTrue(queue.isEmpty());
         assertEquals(0, queue.size());
     }
+}
