@@ -100,8 +100,8 @@ public class MainTest extends TestCase {
 
 
     public void testProcessActionsAndSkip() {
-        Print_Job job1 = new Print_Job(5, "Victor", "First");
-        Print_Job job2 = new Print_Job(5, "Chris", "Second");
+        Print_Job job1 = new Print_Job(5, "Victor", "First", 2);
+        Print_Job job2 = new Print_Job(5, "Chris", "Second", 2);
         printer.addJob(job1);
         printer.addJob(job2);
 
@@ -143,8 +143,8 @@ public class MainTest extends TestCase {
         game.processChoice(3); // clear jam when not jammed
 
         // Jammed print branch
-        Print_Job bigJob = new Print_Job(20, "Victor", "Big Report");
-        Print_Job smallJob = new Print_Job(5, "Chris", "Notes");
+        Print_Job bigJob = new Print_Job(20, "Victor", "Big Report", 2);
+        Print_Job smallJob = new Print_Job(5, "Chris", "Notes", 2);
         printer.addJob(bigJob);
         printer.addJob(smallJob);
         printer.jam();
@@ -169,7 +169,7 @@ public class MainTest extends TestCase {
 
         // Not enough paper branch (drain paper with 50-page job, then try
         // 20-page job)
-        printer.addJob(new Print_Job(50, "Madison", "Book"));
+        printer.addJob(new Print_Job(50, "Madison", "Book", 2));
         game.processChoice(4); // skip bigJob -> 50-page job to front
         game.processChoice(1); // print 50-page job -> 0 paper left
         assertEquals(0, printer.getCurrentPaper());
@@ -207,7 +207,7 @@ public class MainTest extends TestCase {
         // Add 15 jobs so the next random job pushes pending jobs to 16 (>
         // MAX_PENDING_JOBS)
         for (int i = 0; i < 15; i++) {
-            printer.addJob(new Print_Job(1, "User", "Job " + i));
+            printer.addJob(new Print_Job(1, "User", "Job " + i, 1));
         }
 
         game.processChoice(2); // triggers random job (16 jobs) + jam + game
