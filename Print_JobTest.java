@@ -8,10 +8,10 @@ public class Print_JobTest extends TestCase {
 
     public void setUp() {
         jobnum1 = new Print_Job(3, "Madison",
-            "Linear algebra homework due in ten minutes");
+            "Linear algebra homework due in ten minutes", 2);
         jobnum2 = new Print_Job(5, "Alex",
-            "Data structures project documentation");
-        jobnum3 = new Print_Job(11, "Sam", "Lost water bottle posters");
+            "Data structures project documentation", 2);
+        jobnum3 = new Print_Job(11, "Sam", "Lost water bottle posters", 2);
     }
 
 
@@ -40,7 +40,7 @@ public class Print_JobTest extends TestCase {
 
     public void testOnePage() {
         Print_Job jobnew = new Print_Job(1, "Taylor",
-            "Chemistry lab report with suspicious results");
+            "Chemistry lab report with suspicious results", 2);
         assertEquals(1, jobnew.getPages());
 
         assertEquals("Taylor", jobnew.getRequester());
@@ -50,55 +50,55 @@ public class Print_JobTest extends TestCase {
 
 
     public void testZeroPages() {
-        assertIllegalArgument(() -> new Print_Job(1, "Avery", "Valid job"),
+        assertIllegalArgument(() -> new Print_Job(1, "Avery", "Valid job", 2),
             false);
         assertIllegalArgument(() -> new Print_Job(0, "Avery",
-            "Concert tickets for Friday night"), true);
+            "Concert tickets for Friday night", 2), true);
     }
 
 
     public void testNegativePages() {
         assertIllegalArgument(() -> new Print_Job(-2, "Quinn",
-            "Birthday card for a roommate"), true);
+            "Birthday card for a roommate", 2), true);
     }
 
 
     public void testNullRequester() {
         assertIllegalArgument(() -> new Print_Job(3, null,
-            "Dorm cleaning schedule nobody follows"), true);
+            "Dorm cleaning schedule nobody follows", 2), true);
     }
 
 
     public void testGetEmptyRequester() {
         assertIllegalArgument(() -> new Print_Job(4, " ",
-            "Calculus practice problems and solutions"), true);
+            "Calculus practice problems and solutions", 2), true);
     }
 
 
     public void testGetBlankRequester() {
         assertIllegalArgument(() -> new Print_Job(4, "",
-            "Calculus practice problems and solutions"), true);
+            "Calculus practice problems and solutions", 2), true);
     }
 
 
     public void testNullDescription() {
-        assertIllegalArgument(() -> new Print_Job(3, "Cameron", null), true);
+        assertIllegalArgument(() -> new Print_Job(3, "Cameron", null, 2), true);
     }
 
 
     public void testEmptyDescription() {
-        assertIllegalArgument(() -> new Print_Job(4, "Casey", ""), true);
+        assertIllegalArgument(() -> new Print_Job(4, "Casey", "", 2), true);
     }
 
 
     public void testBlankDescription() {
-        assertIllegalArgument(() -> new Print_Job(6, "Riley", " "), true);
+        assertIllegalArgument(() -> new Print_Job(6, "Riley", " ", 2), true);
     }
 
 
     public void testIndepJobs() {
         Print_Job jobnew = new Print_Job(7, "Taylor",
-            "Chemistry lab report with suspicious results");
+            "Chemistry lab report with suspicious results", 2);
         assertEquals(7, jobnew.getPages());
 
         assertEquals(3, jobnum1.getPages());
@@ -117,8 +117,8 @@ public class Print_JobTest extends TestCase {
     }
     public void testMultipleIndependentJobs()
     {
-         Print_Job first = new Print_Job(3, "Alex", "Essay");
-    Print_Job second = new Print_Job(8, "Sam", "Report");
+         Print_Job first = new Print_Job(3, "Alex", "Essay", 2);
+    Print_Job second = new Print_Job(8, "Sam", "Report", 2);
 
         assertEquals(3, first.getPages());
         assertEquals(8, second.getPages());

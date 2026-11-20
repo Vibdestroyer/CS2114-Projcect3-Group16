@@ -25,7 +25,7 @@ public class PrinterTest extends TestCase {
 
     public void testPrinterJobNext() {
         printer.addPaper(40);
-        Print_Job jobnum1 = new Print_Job(10, "Madison", "Report");
+        Print_Job jobnum1 = new Print_Job(10, "Madison", "Report", 2);
         printer.addJob(jobnum1);
 
         assertTrue(printer.printNextJob());
@@ -36,7 +36,7 @@ public class PrinterTest extends TestCase {
 
     public void testPrinterNotSufficientPaper() {
         printer.addPaper(5);
-        Print_Job jobnum1 = new Print_Job(10, "Madison", "Photo");
+        Print_Job jobnum1 = new Print_Job(10, "Madison", "Photo", 2);
         printer.addJob(jobnum1);
         assertFalse(printer.printNextJob());
         assertEquals(5, printer.getCurrentPaper());
@@ -49,7 +49,7 @@ public class PrinterTest extends TestCase {
 
     public void testJamPrint() {
         printer.addPaper(20);
-        Print_Job jobnum1 = new Print_Job(5, "Chris", "Picture");
+        Print_Job jobnum1 = new Print_Job(5, "Chris", "Picture", 2);
         printer.addJob(jobnum1);
         printer.jam();
 
@@ -87,7 +87,7 @@ public class PrinterTest extends TestCase {
 
     public void testClearJam() {
         printer.addPaper(20);
-        Print_Job job = new Print_Job(5, "Chris", "Notes");
+        Print_Job job = new Print_Job(5, "Chris", "Notes", 2);
         printer.addJob(job);
         printer.jam();
         assertTrue(printer.isJammed());
@@ -111,7 +111,7 @@ public class PrinterTest extends TestCase {
 
 
     public void testSkipNextJobSingleJob() {
-        Print_Job job1 = new Print_Job(5, "Madison", "Notes");
+        Print_Job job1 = new Print_Job(5, "Madison", "Notes", 2);
         printer.addJob(job1);
 
         assertTrue(printer.skipNextJob());
@@ -122,9 +122,9 @@ public class PrinterTest extends TestCase {
 
     public void testSkipNextJobMultipleJobs() {
         printer.addPaper(50);
-        Print_Job job1 = new Print_Job(5, "Madison", "Notes");
-        Print_Job job2 = new Print_Job(8, "Chris", "Slides");
-        Print_Job job3 = new Print_Job(3, "Victor", "Syllabus");
+        Print_Job job1 = new Print_Job(5, "Madison", "Notes", 2);
+        Print_Job job2 = new Print_Job(8, "Chris", "Slides", 2);
+        Print_Job job3 = new Print_Job(3, "Victor", "Syllabus", 2);
         printer.addJob(job1);
         printer.addJob(job2);
         printer.addJob(job3);
@@ -156,8 +156,8 @@ public class PrinterTest extends TestCase {
     public void testPrintMultipleJobs()
     {
         printer.addPaper(50);
-        Print_Job job1 = new Print_Job(5, "Alex", "Notes");
-    Print_Job job2 = new Print_Job(10, "Sam", "Report");
+        Print_Job job1 = new Print_Job(5, "Alex", "Notes", 2);
+    Print_Job job2 = new Print_Job(10, "Sam", "Report", 2);
 
         printer.addJob(job1);
         printer.addJob(job2);
@@ -177,8 +177,8 @@ public class PrinterTest extends TestCase {
     {
         printer.addPaper(30);
 
-        Print_Job job1 = new Print_Job(5, "Alex", "Notes");
-    Print_Job job2 = new Print_Job(8, "Sam", "Report");
+        Print_Job job1 = new Print_Job(5, "Alex", "Notes", 2);
+    Print_Job job2 = new Print_Job(8, "Sam", "Report", 2);
 
         printer.addJob(job1);
         printer.addJob(job2);
