@@ -103,12 +103,16 @@ public class Main {
             case 4:
                 skipNextJob();
                 break;
+            case 5:
+                printer.refillInk();
+                view.showMessage("Ink refilled to 100%!");
+                break;
             case 0:
                 running = false;
                 view.showMessage("Thanks for playing Print Panic!");
                 return;
             default:
-                view.showMessage("Invalid option. Enter 0, 1, 2, or 3.");
+                view.showMessage("Invalid option. Enter 0, 1, 2, 3, or 4.");
                 break;
         }
 
@@ -128,7 +132,9 @@ public class Main {
     public void updateView() {
         view.displayStatus(printer.getCurrentPaper(), printer.getMaxPaper(),
             printer.getPendingJobs(), printer.isJammed());
+
         Print_Job nextJob = printer.getNextJob();
+        
         if (nextJob != null) {
             view.showMessage("Next job: " + nextJob.getRequester() + " - "
                 + nextJob.getDescription() + " (" + nextJob.getPages()
