@@ -56,9 +56,9 @@ public class Queue {
             {
                 rear= newNode;
             }
+        }
         size++;
         }
-}
 
 
     public Print_Job dequeue() {
