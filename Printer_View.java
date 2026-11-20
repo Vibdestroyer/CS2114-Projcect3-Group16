@@ -24,10 +24,11 @@ public class Printer_View {
     }
 
     public void displayStatus(int currentPaper, int maxPaper,
-        int pendingJobs, boolean jammed) {
+        int pendingJobs, boolean jammed, int currentInk) {
         output.println();
         output.println("--- Printer Status ---");
         output.println("Paper: " + currentPaper + "/" + maxPaper);
+        output.println("Ink: " + currentInk+ "%");
         output.println("Pending jobs: " + pendingJobs);
         output.println("Status: " + (jammed ? "JAMMED" : "Ready"));
     }
