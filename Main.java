@@ -132,7 +132,7 @@ public class Main {
         if (nextJob != null) {
             view.showMessage("Next job: " + nextJob.getRequester() + " - "
                 + nextJob.getDescription() + " (" + nextJob.getPages()
-                + " pages)");
+                + " pages)" + " | Priority: " + nextJob.getPriority());
         }
         else {
             view.showMessage("There are no pending jobs.");
@@ -144,8 +144,9 @@ public class Main {
     public void generatePrintJob() {
         Print_Job job = textReader.createRandomJob();
         printer.addJob(job);
+
         view.showMessage("New job: " + job.getRequester() + " - " + job
-            .getDescription() + " (" + job.getPages() + " pages)");
+            .getDescription() + " (" + job.getPages() + " pages)" + " | Priority: " + job.getPriority());
     }
 
 
