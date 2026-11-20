@@ -159,7 +159,7 @@ A future improvement would be to separate consumable resources such as paper and
 This would allow us to introduce additional resources, such as different paper types, without repeatedly modifying the `Printer` class. It would also make the resource-management logic easier to test independently.
 
 # Next Steps 
-For our final build, we plan to focus on making sure the priority queue works the way it should with the rest of the printer simulation.
+For our final build, we plan to focus on making sure the priority queue works the way it should with the rest of the printer simulation. Cosmetic fixes with allowing the user to add jobs and assign priorities to jobs in the queue.
 
 
 # Remaining work for the final build
