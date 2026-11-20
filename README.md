@@ -1,8 +1,8 @@
 # CS2114-Project3-Group16
 # Print Panic 
-Print Panic is a console game derived from the concepts of a printer- the player manages a printer while also trying to prevent a growing load of print jobs. The player has to print the jobs in order of each other, refill paper when needed, and is responsible for clearing printer jams.
+Print Panic is a console game derived from the concepts of a printer- the player manages a printer while also trying to prevent a growing load of print jobs. The player has to print the jobs in order of each other, refill paper when needed, and is responsible for clearing printer jams as well as managing the order of pending jobs.
 
-The program uses a linked queue to monitor and manage print jobs first in, first out (FIFO) order. Each printing job has a requester, number of pages, and description.
+The original program used a linked queue to process print jobs in first-in, first-out (FIFO) order. For Project 4, we updated the queue to support priority-based printing. Each print job contains a requester, number of pages, description, and priority level.
 
 New jobs and printer jams will take place randomly as part of the game, requiring the player to manage limited paper resources and also keep track of the pending jobs to be completed.
 
@@ -11,7 +11,7 @@ New jobs and printer jams will take place randomly as part of the game, requirin
 2. Open a project in a Java development environment.
 3. Ensure names.txt and description.txt are in the working directory.
 4. Compile the Java source files.
-5. Run Main.java
+5. Run Main.java and follow the console instructions.
 
 # Game Controls
 | Input | Action                       |
@@ -22,7 +22,17 @@ New jobs and printer jams will take place randomly as part of the game, requirin
 | 4     | Skip the next job            |
 | 0     | Quit the game                |
 
-The Printer begins with 50 sheets of paper and 3 pending jobs. New jobs have a 50% chance of appearing after an action, and printer jams have a 15% chance under applicable conditions.
+The Printer begins with 50 sheets of paper and 3 pending jobs. 
+
+New jobs have a 50% chance of appearing after an action.
+
+Printer jams have a 15% chance under applicable conditions.
+
+The player loses if the number of pending jobs exceeds 15.
+
+Printing requires sufficient paper and a printer that is not jammed.
+
+Skipping a job does not use paper.
 
 The player loses if the number of jobs pending is above 15.
 
@@ -40,6 +50,43 @@ The project separates the printer's internal logic from user interaction.
 | Main.java | Controls the game and connects the model and view. |
 
 The Printer and Queue classes do not depend on Printer_View, allowing the model to be tested on its own.
+
+# Project 4: Priority Queue Feature
+
+For Project 4, we updated Print Panic by implementing a priority queue for print jobs.
+
+Previously, jobs were processed in the order they arrived using a FIFO queue. With the new feature, each print job is assigned a priority level that determines its position in the queue.
+
+We introduced 3 priority levels:
+1) High(3): printed first.
+2) Normal(2): printed after high-priority jobs.
+3) Low(1): printed last.
+
+Jobs with the same priority are still processed in their original order of arrival.
+
+To implement this feature, we updated Print_Job.java to store a priority value and modified the enqueue() method in Queue.java to insert jobs according to priority.
+
+We also updated Text_Reader.java to generate random priority levels for new print jobs.
+
+This feature makes the simulation more realistic because important documents can be processed before less urgent ones.
+
+# Changes from the Original Spec
+
+# Skip-and-Requeue
+
+We added a fourth menu option, Skip Next Job, which allows the player to postpone the job at the front of the queue.
+
+Skipping moves the selected job back into the queue without printing it. The next available job becomes the front job.
+
+This feature uses no paper and allows players to manage their printing workload.
+
+The skip functionality uses queue operations to reposition jobs while maintaining the queue's ordering rules.
+
+Priority-Based Printing
+
+The original FIFO implementation was modified to support three levels of priority.
+
+Higher-priority jobs are processed before lower-priority jobs, while jobs with equal priority preserve their arrival order.
 
 ## Testing
 
@@ -66,28 +113,19 @@ We noticed that we did not need to completely change the queue we already had, a
 
 We also had think about what would happen when multiple jobs had the same priority, and decided to preserve the original order of arrival so the queue would still be fair. 
 
-This updated feature helped us understand how a small change could have a larger effect on the program and how it operates.
-
-
-
-# Changes from Original Spec
-We added a fourth menu option, **Skip next job**, so players can postpone the job at the front of the queue. Skipping moves that job to the back and brings the next job to the front. The other jobs keep their relative order, and skipping uses no paper.
-
+This updated feature helped us understand how a small change could have a larger effect on the program and how it operates.  It also reinforced the importance of testing edge cases and keeping the model separate from the user interface.
 
 # Next Steps 
-1. Complete and verify tests for the core Queue methods. 
-2. Expand PrinterTest.java to cover paper limits, paper jams, and unsuccessful print attempts
-3. Add tests for invalid file paths and empty input files in Text_ReaderTest.java
-4. Verify that Printer_View.getUserChoice() handles invalid input without crashing.
-5. Review and improve code documentation.
+For our final build, we plan to focus on making sure the priority queue works the way it should with the rest of the printer simulation.
+
+Our main goals:
+1) 
+2) 
+3) 
+
 
 # Your change feature.
 For project 4, we updated Print Panic by implementing a priority queue for print jobs. Before, they were proceesed in the order they arrived using a first in, first out queue. With the new feature added, print jobs are assigned to a priority level that will decide when they are going to be printed. 
-
-We introduced 3 priority levels:
-1) High(3): printed first.
-2) Normal(2): printed after high-priority jobs.
-3) Low(1): printed last.
 
 Jobs with the same level of priority are still printed in the order they arrived. To implement this feature, we updated the Print_Job class to 
 store a priority value and we changed the enqueue() method in Queue.java to insert jobs in order of priority. We changed Text_Reader.java to create random priority levels for new print jobs. 
