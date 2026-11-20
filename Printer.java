@@ -3,6 +3,8 @@ public class Printer {
     private int currentPaper;
     private boolean isJammed;
     private final Queue printQueue;
+    private ink currentInk=100;
+    private static final int MAX_INK=100;
 
     public Printer(int maxPaper) {
         if (maxPaper <= 0) {
@@ -13,6 +15,14 @@ public class Printer {
         currentPaper = 0;
         isJammed = false;
         printQueue = new Queue();
+    }
+
+    public int getCurrentInk(){
+        return currentInk;
+    }
+
+    public void refillInk(){
+        currentInk=MAX_INK;
     }
 
 
@@ -42,8 +52,12 @@ public class Printer {
         if (currentPaper < nextJob.getPages()) {
             return false;
         }
+        if (currentInk < nextJob.getPages()){
+            return false;
+        }
 
         currentPaper -= nextJob.getPages();
+        currentInk -= nextJob.getPages();
         printQueue.dequeue();
         return true;
     }
