@@ -3,7 +3,7 @@ public class Printer {
     private int currentPaper;
     private boolean isJammed;
     private final Queue printQueue;
-    private ink currentInk=100;
+    private int currentInk=100;
     private static final int MAX_INK=100;
 
     public Printer(int maxPaper) {
