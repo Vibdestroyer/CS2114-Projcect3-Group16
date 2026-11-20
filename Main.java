@@ -112,7 +112,7 @@ public class Main {
                 view.showMessage("Thanks for playing Print Panic!");
                 return;
             default:
-                view.showMessage("Invalid option. Enter 0, 1, 2, 3, or 4.");
+                view.showMessage("Invalid option. Enter 0, 1, 2, 3, 4, or 5.");
                 break;
         }
 
@@ -131,7 +131,7 @@ public class Main {
 
     public void updateView() {
         view.displayStatus(printer.getCurrentPaper(), printer.getMaxPaper(),
-            printer.getPendingJobs(), printer.isJammed());
+            printer.getPendingJobs(), printer.isJammed(), printer.getCurrentInk());
 
         Print_Job nextJob = printer.getNextJob();
         
