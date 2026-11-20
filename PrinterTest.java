@@ -22,6 +22,68 @@ public class PrinterTest extends TestCase {
         assertEquals(85, printer.getCurrentPaper());
     }
 
+    public void testInkDecreasesAfterPrinting() {
+        printer.addPaper(20);
+
+        Print_Job job= new Print_Job(5, "Madison", "Notes", 2);
+        printer.addJob(job);
+
+        assertEquals(100, printer.getCurrentInk());
+
+        assertTrue(printer.printNextJob());
+
+        assertEquals(95, printer.getCurrentInk());
+        assertEquals(15, printer.getCurrentPaper());
+
+    }
+
+    public void testRefillInk()
+    {
+        printer.addPaper(20);
+
+        Print_Job job= new Print_Job(10, "Taylor", "Homework", 2);
+
+        printer.addJob(job);
+        printer.printNextJob();
+
+        assertEquals(90, printer.getCurrentInk());
+
+        printer.refillInk();
+        assertEquals(100, printer.getCurrentInk());
+       }
+
+    public void testInsufficientInk() {
+        printer.addPaper(50);
+
+        Print_Job job1 = new Print_Job(
+        50, "Madison", "Report", 2);
+
+        Print_Job job2 = new Print_Job(
+        50, "Chris", "Notes", 2);
+
+        Print_Job job3 = new Print_Job(
+        5, "Victor", "Essay", 2);
+
+        printer.addJob(job1);
+        printer.addJob(job2);
+        printer.addJob(job3);
+
+        assertTrue(printer.printNextJob());
+        assertTrue(printer.printNextJob());
+
+        assertEquals(0, printer.getCurrentInk());
+        assertFalse(printer.printNextJob());
+
+        assertEquals(1, printer.getPendingJobs());
+        assertEquals(job3, printer.getNextJob());
+
+        printer.refillInk();;
+
+        assertTrue(printer.printNextJob());
+        assertEquals(95, printer.getCurrentInk());
+    )
+        }
+
 
     public void testPrinterJobNext() {
         printer.addPaper(40);
