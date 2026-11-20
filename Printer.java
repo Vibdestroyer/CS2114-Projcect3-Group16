@@ -55,7 +55,6 @@ public class Printer {
         if (currentInk < nextJob.getPages()){
             return false;
         }
-
         currentPaper -= nextJob.getPages();
         currentInk -= nextJob.getPages();
         printQueue.dequeue();

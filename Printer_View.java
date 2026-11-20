@@ -38,6 +38,7 @@ public class Printer_View {
         output.println("2. Refill paper to maximum");
         output.println("3. Clear jam");
         output.println("4. Skip next job");
+        output.println("5. Refill ink");
         output.println("0. Quit");
         output.print("Choose an action: ");
         output.flush();
