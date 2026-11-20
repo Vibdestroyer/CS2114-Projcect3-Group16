@@ -19,8 +19,8 @@ public class Printer_View {
 
     public void showWelcome() {
         output.println("Welcome to Print Panic!");
-        output.println("Print jobs in order, refill paper, and clear jams.");
-        output.println("New jobs may arrive after every action, even invalid input.");
+        output.println("Print jobs by priority, refill paper, and clear jams.");
+        output.println("Priority: 3 = High, 2 = Normal, 1 = Low.");
     }
 
     public void displayStatus(int currentPaper, int maxPaper,
@@ -52,5 +52,17 @@ public class Printer_View {
 
     public void showMessage(String message) {
         output.println(message);
+    }
+
+    public void displayNextJob(Print_Job job)
+    {
+        if (job==null)
+        {
+            output.println("No print jobs waiting.");
+        }
+        else{
+            output.println("Next job: "  + job.getDescription());
+            output.println("Priority: "  + job.getPriority());
+        }
     }
 }
